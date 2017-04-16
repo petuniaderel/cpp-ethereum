@@ -37,6 +37,7 @@
 #include <boost/algorithm/string/trim_all.hpp>
 #include <libdevcore/FileSystem.h>
 #include "MinerAux.h"
+#include <sstream>
 using namespace std;
 using namespace dev;
 using namespace dev::eth;
@@ -68,6 +69,9 @@ void version()
 
 int main(int argc, char** argv)
 {
+	stringstream ss;
+	cout.rdbuf (ss.rdbuf()); 
+	cerr.rdbuf (ss.rdbuf());
 	cout << "Genoil's ethminer " << ETH_PROJECT_VERSION << endl;
 	cout << "=====================================================================" << endl;
 	cout << "Forked from github.com/ethereum/cpp-ethereum" << endl;
@@ -76,7 +80,7 @@ int main(int argc, char** argv)
 	cout << "Please consider a donation to:" << endl;
 	cout << "ETH: 0xeb9310b185455f863f526dab3d245809f6854b4d" << endl << endl;
 
-	MinerCLI m(MinerCLI::OperationMode::Farm);
+	MinerCLI m(MinerCLI::OperationMode::Stratum);
 
 	for (int i = 1; i < argc; ++i)
 	{

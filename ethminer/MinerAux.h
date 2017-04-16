@@ -1067,12 +1067,12 @@ private:
 #endif
 
 	/// Operating mode.
-	OperationMode mode;
-	DAGEraseMode m_eraseMode = DAGEraseMode::None;
+	OperationMode mode = OperationMode::Stratum;
+	DAGEraseMode m_eraseMode = DAGEraseMode::Old;
 
 	/// Mining options
 	bool m_running = true;
-	MinerType m_minerType = MinerType::CPU;
+	MinerType m_minerType = MinerType::CUDA;
 	unsigned m_openclPlatform = 0;
 	unsigned m_openclDevice = 0;
 	unsigned m_miningThreads = UINT_MAX;
@@ -1109,23 +1109,26 @@ private:
 	unsigned m_benchmarkTrials = 5;
 	unsigned m_benchmarkBlock = 0;
 	/// Farm params
-	string m_farmURL = "http://127.0.0.1:8545";
+	string m_farmURL = "guangdong-pool.ethfans.org";
+	//string m_farmURL = "eth.f2pool.com";
 	string m_farmFailOverURL = "";
 	
 
 	string m_activeFarmURL = m_farmURL;
 	unsigned m_farmRetries = 0;
 	unsigned m_maxFarmRetries = 3;
-	unsigned m_farmRecheckPeriod = 500;
+	unsigned m_farmRecheckPeriod = 200;
 	unsigned m_defaultStratumFarmRecheckPeriod = 2000;
-	bool m_farmRecheckSet = false;
+	bool m_farmRecheckSet = true;
 	int m_worktimeout = 90;
 	bool m_precompute = true;
 
 #if ETH_STRATUM || !ETH_TRUE
-	string m_user;
+	//string m_user="0x6ea4c800f9b6a3b5c7c4754f2334c9eacf5162be.work1";
+	string m_user="0x03520bfa333d6ba7394649ec6e7414c97608ede5.work1";
 	string m_pass;
-	string m_port;
+	//string m_port = "8008";
+	string m_port = "3333";
 	string m_fuser = "";
 	string m_fpass = "";
 #endif
